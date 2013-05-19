@@ -1,4 +1,5 @@
 #!/bin/sh
+shopt -s extglob dotglob
 
 CURR_DIR="$(pwd)"
 TMP_DIR="$CURR_DIR"-gh-pages
@@ -11,7 +12,7 @@ cd "$TMP_DIR"
 
 git branch -D gh-pages
 git checkout --orphan gh-pages
-git rm -rf .
+rm -rf !(.git|.gitignore)
 
 cp -r "$CURR_DIR"/_build/html/* .
 touch .nojekyll
