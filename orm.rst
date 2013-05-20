@@ -2,8 +2,7 @@
 Object-Relational Mapping
 =========================
 
-DroidParts takes a traditional DAO approach of having `Entities` +
-`EntityManagers` (as opposed to `ActiveRecord`).
+DroidParts takes a traditional DAO approach of having *Entities* + *EntityManagers* (as opposed to *ActiveRecord*).
 
 DBOpenHelper
 ============
@@ -19,18 +18,61 @@ Setup
 #. Return an instance of it in the ``DependencyProvider``.
 #. Study available helpers, like ``addIndexes(...)`` or ``addMissingColumns(...)``.
 
+EntityManager
+=============
+
+An ``EntityManager`` for interactions.
+You'll usually have an EntityManager subclass for each Entity type and add helper methods there.
+Like so:
+
+.. code-block:: java
+    
+   public class PostEntityManager extends EntityManager<Post> {
+   
+      public PostEntityManager(Context ctx) {
+         super(Post.class, ctx);
+      }
+      
+      public Select<Post> selectPostsAfterYear(int year) {
+         return select().where("year", Is.GREATER, year);
+      }
+      
+   }
+
 CRUD Operations
-===============
+---------------
 
-See ``EntityManager``.
 
-Advanced Querying
-=================
+``EntityManager`` contains the following methods:
 
-Check out ``EntityManager``'s ``select()``, ``update()``, ``delete()`` builders.
+* ``boolean create(EntityType item)``
+* ``EntityType read(long id)``
+* ``boolean update(EntityType item)``
+* ``boolean delete(long id)``
+* ``boolean createOrUpdate(EntityType item)``
+
+There are also create, update, delete methods that accept ``Collection<EntityType>``
+to run multiple operations in a transaction.
+
+Advanced Operations
+-------------------
+
+``EntityManager`` contains ``select()``, ``update()``, ``delete()`` builders.
+
+.. code-block:: java
+
+    // Select is used to provide data to EntityCursorAdapter
+   Select<EntityType> select = select().columns("_id", "name").where("external_id", Is.EQUAL, 10);
+   
+   // alternatively, call execute() to get the underlying Cursor
+   Cursor cursor = select().where("name", Is.LIKE, "%%alex%%").execute();
+   
+   // use Where object for complex queries
+   Where haveCoordinaltes = new Where("latitude", Is.NOT_EQUAL, 0).or("longitude", Is.NOT_EQUAL, 0);
+   select().where("country", Is.EQUAL, "us").where(haveCoordinates);
 
 Many-to-many
-============
+------------
 
 A junction table is required for m2m:
 
