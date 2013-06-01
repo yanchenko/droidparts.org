@@ -9,6 +9,11 @@ Downloads Images and attaches them to ImageViews.
 * inBitmap support.
 * Cross-fade support.
 
+Customizing
+===========
+
+See constructor, ``BitmapMemoryCache``, ``BitmapDiskCache``.
+
 ImageReshaper
 =============
 
@@ -19,7 +24,21 @@ ImageFetchListener
 
 Receives callbacks.
 
-Customizing
-===========
+Pausing
+=======
 
-See constructor, ``BitmapMemoryCache``, ``BitmapDiskCache``.
+ImageFetcher can be paused while scrolling.
+See ``ImageListAdapter`` from *DroidPartsGram* for an example.
+
+.. code-block:: java
+   
+   @Override
+   public void onScrollStateChanged(AbsListView view, int scrollState) {
+      switch (scrollState) {
+      case OnScrollListener.SCROLL_STATE_FLING:
+         imageFetcher.pause();
+         break;
+      default:
+         imageFetcher.resume(true);
+      }
+   }

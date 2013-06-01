@@ -5,7 +5,9 @@ Working in Background
 AsyncTask
 =========
 
-AsyncTaskResultListener
+``AsyncTaskResultListener``
 
 IntentService
 =============
+
+``void removePendingIntents()``

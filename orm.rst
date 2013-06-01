@@ -18,6 +18,26 @@ Setup
 #. Return an instance of it in the ``DependencyProvider``.
 #. Study available helpers, like ``addIndexes(...)`` or ``addMissingColumns(...)``.
 
+Entities
+========
+
+Mapping classes must extend ``Entity`` or it's subclass.
+``Entity`` already has a ``public long id;`` field that is mapped to ``_id`` column.
+It will be automatically populated once once an entity is saved or read.
+
+@Table Annotation
+-----------------
+
+* ``name``
+
+@Column Annotation
+------------------
+
+* ``name``
+* ``nullable``
+* ``unique``
+* ``eager`` - when ``read()`` or ``fillEagerForeignKeys()``.
+
 EntityManager
 =============
 
@@ -41,7 +61,6 @@ Like so:
 
 CRUD Operations
 ---------------
-
 
 ``EntityManager`` contains the following methods:
 
@@ -70,6 +89,9 @@ Advanced Operations
    // use Where object for complex queries
    Where haveCoordinaltes = new Where("latitude", Is.NOT_EQUAL, 0).or("longitude", Is.NOT_EQUAL, 0);
    select().where("country", Is.EQUAL, "us").where(haveCoordinates);
+   
+*  ``void fillEagerForeignKeys(EntityType item)``
+*  ``fillForeignKeys(EntityType item, String... columnNames)``
 
 Many-to-many
 ------------

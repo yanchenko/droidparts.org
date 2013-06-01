@@ -28,7 +28,6 @@ is a set of Android libraries including:
    introduction
    getting_started
    di
-   models
    orm
    adapters
    prefs
