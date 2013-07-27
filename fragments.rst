@@ -2,7 +2,7 @@
 Fragments
 =========
 
-Take care to extend appropriate Activities & Fragments as described in :doc:`di`.
+Be careful to extend appropriate Activities & Fragments as described in :doc:`di`.
 
 FragmentActivity
 ================

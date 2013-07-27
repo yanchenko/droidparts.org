@@ -6,10 +6,11 @@ DroidParts
    
    .. image:: _static/images/droidparts_logo.*
    
-is a set of Android libraries including:
+is a carefully crafted Android framework that includes:
 
-* *DI* - injection of views, fragments, services, etc.
-* *ORM* - efficient model persistence utilizing Cursors & fluent API.
+* *DI* - injection of Views, Fragments, Services, etc.
+* *ORM* - efficient persistence utilizing Cursors & fluent API.
+* *EventBus* for posting event notifications.
 * Simple *JSON* (de)serialization capable of handling nested objects.
 * Improved *AsyncTask* & *IntentService* with Exceptions & result reporting support.
 * *L*\ogger that figures out tag itself & logs any object.
@@ -18,10 +19,12 @@ is a set of Android libraries including:
 * *ImageFetcher* to asynchronously attach images to ImageViews, with caching,
   cross-fade & transformation support.
 * Numerous *Utils*.
-* Threefold *Fragments* support: native on 3.0+ and either
+* *Fragments* support: native on 3.0+ and either
   pure `SupportLibrary <http://developer.android.com/tools/extras/support-library.html>`_
   or `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-backed on 2.2+.
-  
+
+All these features come in an under 300kB jar which means -> 0 overengineering.
+
 .. toctree::
    :maxdepth: 2
    
@@ -29,6 +32,7 @@ is a set of Android libraries including:
    getting_started
    di
    orm
+   event_bus
    adapters
    prefs
    json

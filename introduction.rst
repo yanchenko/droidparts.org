@@ -3,11 +3,14 @@ Introduction
 ============
 
 Developing an Android app includes a number of repetitive tasks.
-Like saving data to SQLite or performing Model <=> JSON conversions or
+Like SQLite interactions or Model <=> JSON conversions or
 ``findViewsById()`` and then casting.
 
 Eventually I ended up with a number of helper classes that were
 copied from project to project. That's how DroidParts started.
+
+The vision for DroidParts is a minimalistic framework
+with clean API that eliminates the most common boilerplate code.
 
 Some Code
 =========
