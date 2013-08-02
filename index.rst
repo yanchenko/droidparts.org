@@ -6,6 +6,8 @@ DroidParts
    
    .. image:: _static/images/droidparts_logo.*
    
+   http://github.com/yanchenko/droidparts
+
 is a carefully crafted Android framework that includes:
 
 * *DI* - injection of Views, Fragments, Services, etc.
@@ -23,7 +25,7 @@ is a carefully crafted Android framework that includes:
   pure `SupportLibrary <http://developer.android.com/tools/extras/support-library.html>`_
   or `ActionBarSherlock <https://github.com/JakeWharton/ActionBarSherlock>`_-backed on 2.2+.
 
-All these features come in an under 300kB jar which means -> 0 overengineering.
+All these features come in an under 300kB jar which means →0 overengineering.
 
 .. toctree::
    :maxdepth: 2

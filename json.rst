@@ -18,4 +18,4 @@ Mapping classes must extend ``Model`` or it's subclass.
 Nested JSON Objects
 -------------------
 
-Use ``JSONSerializer.__`` separator in ``name`` element to access nested objects.
+Use ``JSONSerializer.__`` separator in ``name`` element to access nested objects fields.

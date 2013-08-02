@@ -46,30 +46,33 @@ The newly created class must be specified in ``AndroidManifest.xml``:
 Activities & Fragments
 ======================
 
-Extend classes from packages ending with when targeting:
+Extend classes from packages ending with one of the following affixes when targeting:
 
-* ``.stock`` - API 11+.
-* ``.support`` - API 8+ with Android Support library.
-* ``.sherlock`` - API 8+ with ActionBarSherlock.
+* ``.stock`` - API 11+, e.g. ``org.droidparts.fragment.stock.Fragment``.
+* ``.support`` - API 8+ with Android Support library, e.g. ``org.droidparts.fragment.support.Fragment``.
+* ``.sherlock`` - API 8+ with ActionBarSherlock, e.g. ``org.droidparts.fragment.sherlock.Fragment``.
 
 Annotations
 ===========
 
-* *@InjectView* =::
+* *@InjectView*::
 
-    @InjectView(id=R.id.view_btn, click=true)
-    Button btn;
-
-    btn = (Button)findViewById(R.id.view_btn)
+    @InjectView
+    Button btn1;
+    // btn1 = (Button)findViewById(R.id.btn1)
     
-  ``click=true`` makes sense if the class implements ``View.OnClickListener``.
-  Will also work for Preferences.
+    @InjectView(id=R.id.view_btn, click=true)
+    Button btn2;
+    // btn2 = (Button)findViewById(R.id.view_btn)
+    // btn2.setOnClickListener(this);
+    
+  For ``click=true`` to work, the class must implement ``View.OnClickListener``.
+  Also works for Preferences.
 * *@InjectBundleExtra*:
-    * in ``Activity`` = ``getIntent().getExtras().getXX()``.
-    * in ``Fragment`` = ``getArguments().getXX()``.
+    * in an ``Activity`` = ``getIntent().getExtras().getXX()``.
+    * in a ``Fragment`` = ``getArguments().getXX()``.
 * *@InjectDependency* - custom dependency from ``DependencyProvider``.
 * *@InjectResource* - String, String[], Drawable, etc. from res.
 * *@InjectSystemService* = ``getSystemSerice(Context.SERVICE_NAME)``.
-* *@InjectFragment* - in ``FragmentActivity``, inject ``Fragment`` listed in
-  xml.
+* *@InjectFragment* - in ``FragmentActivity``, inject ``Fragment`` specified in layout xml.
 * *@InjectParentActivity* - in ``Fragment``, inject the ``Actvity`` it belongs to.

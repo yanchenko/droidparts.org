@@ -5,9 +5,9 @@ Working in Background
 AsyncTask
 =========
 
-``AsyncTaskResultListener``
+``AsyncTask`` & ``SimpleAsyncTask`` support ``AsyncTaskResultListener`` and return either a Result or an Exception.
 
 IntentService
 =============
 
-``void removePendingIntents()``
+Similarly, ``IntentService`` is extended to support ``ResultReceiver``. Also has ``void removePendingIntents()`` method.
