@@ -45,4 +45,7 @@ All these features come in an under 300kB jar which means →0 overengineering.
    log
    utils
    widgets
+   faq
+   
+More useful code: https://gist.github.com/yanchenko
 
