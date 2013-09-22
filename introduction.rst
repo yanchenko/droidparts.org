@@ -122,4 +122,4 @@ The code below:
    
    }
 
-**TL;DR** DroidParts saves a lot of keystrokes & helps write elegant code.
+DroidParts saves a lot of keystrokes & helps write elegant code.
