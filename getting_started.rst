@@ -2,49 +2,75 @@
 Getting Started
 ===============
 
-General recommendation is to study the sample apps listed below to see DroidParts in action.
+I suggest to read this guide for an overview,
+then study the sample apps to see DroidParts in action.
    
 Repository Structure
 ====================
 
 ::
 
-    git clone git@github.com:yanchenko/droidparts.git
+    git clone https://github.com/yanchenko/droidparts.git
     
 and you'll see:
 
 #. *droidparts* - the library.
-#. *droidparts-test* - unit tests.
+#. *droidparts-support* - :doc:`support`.
 #. *droidparts-samples* - sample apps:
-    #. ``DroidPartsGram`` - a better Instagram alternative. (:
-    #. ``droidparts-sample`` - an older fragments-free sample app.
+    * ``DroidPartsGram`` - a better Instagram alternative. (:
+    * ``droidparts-sample`` - an older fragment-free app.
+#. *droidparts-test* - unit tests.
     
-Obtaining
-=========
+Integration
+===========
 
-The easy way is either to download the latest
-`droidparts-x.y.z.jar <http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.droidparts&a=droidparts&v=LATEST>`_
-and add it to ``libs`` folder or specify as a Maven dependency::
+There are several options:
 
-   <dependency>
-     <groupId>org.droidparts</groupId>
-     <artifactId>droidparts</artifactId>
-     <version>${version.from.jar.above}</version>
-   </dependency>
-   
-A slightly harder way is to use the library project + ActionBarSherlock required to compile it.
+* Download the latest `droidparts-x.y.z.jar <http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.droidparts&a=droidparts&v=LATEST>`_ and put it to the ``libs`` folder.
+
+* Specify as a Gradle or Maven dependency::
+
+.. code-block:: groovy
+
+    dependencies {
+        compile 'org.droidparts:droidparts:${version.from.jar.above}'
+    }
+
+.. code-block:: xml
+
+    <dependency>
+      <groupId>org.droidparts</groupId>
+      <artifactId>droidparts</artifactId>
+      <version>${version.from.jar.above}</version>
+    </dependency>
+
+Example: `build.gradle <https://github.com/yanchenko/droidparts/blob/master/droidparts-samples/DroidPartsGram/build.gradle>`_ from DroidPartsGram.
+
+Dependencies
+============
+
+Optional dependencies:
+
+* *Android Support library* - if using classes in ``*.support.*`` packages (part of *droidparts-support*).
+  Also required by ``ImageFetcher`` for in-memory cache to work on pre-3.0 Androids.
+* *Apache HttpMime* required by ``RESTClient`` if POSTing multipart files on pre-3.0 Androids.
 
 Configuration
 =============
 
-#. Subclass ``AbstractDBOpenHelper``.
-#. Subclass ``AbstractDependencyProvider``.
-#. Subclass ``AbstractApplication``\(optional).
+Even though DroidParts can be used as a set of libraries, it's full pontential is revealed in framework mode.
 
-:doc:`di` & :doc:`log` have options configurable via `AndroidManifest.xml`.
-The first one is required.
+For that you'll need to subclass:
+
+* ``AbstractDBOpenHelper`` for ORM.
+* ``AbstractDependencyProvider`` and specify the subclass in `AndroidManifest.xml`: :doc:`di`.
+* ``AbstractApplication`` (optional).
+
+:doc:`log` is also configurable via `AndroidManifest.xml`.
 
 ProGuard
 ========
 
-Remember to include ``proguard-droidparts.cfg``.
+If using ProGuard, remember to include *proguard-droidparts.cfg*::
+
+   proguard.config=${sdk.dir}/tools/proguard/proguard-android-optimize.txt:../droidparts/proguard-droidparts.cfg

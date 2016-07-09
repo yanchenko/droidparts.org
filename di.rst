@@ -2,7 +2,7 @@
 Dependency Injection
 ====================
 
-DroidParts injects views, fragments, services, resources etc. out-of-box.
+DroidParts injects views, fragments, services, resources, etc. out-of-box.
 Custom dependencies can be defined in a ``DependencyProvider`` class.
 
 Injection occurs automatically in classes that extend Activities/Services/Fragments that come with DroidParts.
@@ -12,7 +12,7 @@ To inject manually, call ``Injector.inject(...)``.
 DependencyProvider
 ==================
 
-DependencyProvider is a subclass of ``AbstractDependencyProvider`` with methods
+DependencyProvider is a subclass of ``AbstractDependencyProvider`` with factory methods
 that return objects to be injected.
 
 The supported method signatures are:
@@ -25,13 +25,12 @@ The supported method signatures are:
 
 in the latter case ``Context`` will be the one that that requested injection (e.g. an ``Acitvity``).
 
+To inject a singleton, make the corresponding method return the same instance each time it's called.
+
 Setup
 -----
 
-There's one special method to be implemented:
-``public abstract AbstractDBOpenHelper getDBOpenHelper();``.
-
-The newly created class must be specified in ``AndroidManifest.xml``:
+The class you create must be specified in ``AndroidManifest.xml``:
 
 .. code-block:: xml
 
@@ -42,34 +41,33 @@ The newly created class must be specified in ``AndroidManifest.xml``:
             android:value=".DependencyProvider" />
             
     </application>
-    
-Activities & Fragments
-======================
 
-Extend classes from packages ending with when targeting:
+There's one special method that needs to be implemented if using :doc:`orm` ::
 
-* ``.stock`` - API 11+.
-* ``.support`` - API 8+ with Android Support library.
-* ``.sherlock`` - API 8+ with ActionBarSherlock.
+   public AbstractDBOpenHelper getDBOpenHelper();
 
 Annotations
 ===========
 
-* *@InjectView* =::
+* *@InjectView*::
 
-    @InjectView(id=R.id.view_btn, click=true)
-    Button btn;
-
-    btn = (Button)findViewById(R.id.view_btn)
+    @InjectView
+    Button btn1;
+    // btn1 = (Button)findViewById(R.id.btn1)
     
-  ``click=true`` makes sense if the class implements ``View.OnClickListener``.
-  Will also work for Preferences.
+    @InjectView(id=R.id.view_btn, click=true)
+    Button btn2;
+    // btn2 = (Button)findViewById(R.id.view_btn)
+    // btn2.setOnClickListener(this);
+    
+  For ``click=true`` to work, the class must implement ``View.OnClickListener``.
+  Also works for Preferences.
 * *@InjectBundleExtra*:
-    * in ``Activity`` = ``getIntent().getExtras().getXX()``.
-    * in ``Fragment`` = ``getArguments().getXX()``.
+    * in an ``Activity`` = ``getIntent().getExtras().getXX()``.
+    * in a ``Fragment`` = ``getArguments().getXX()``.
+* *@SaveInstanceState* - save state in ``Actvity`` & ``Fragment``.
 * *@InjectDependency* - custom dependency from ``DependencyProvider``.
 * *@InjectResource* - String, String[], Drawable, etc. from res.
 * *@InjectSystemService* = ``getSystemSerice(Context.SERVICE_NAME)``.
-* *@InjectFragment* - in ``FragmentActivity``, inject ``Fragment`` listed in
-  xml.
+* *@InjectFragment* - in ``FragmentActivity``, inject ``Fragment`` specified in layout xml.
 * *@InjectParentActivity* - in ``Fragment``, inject the ``Actvity`` it belongs to.

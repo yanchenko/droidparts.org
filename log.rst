@@ -22,7 +22,7 @@ In a production build (a signed .apk) the tag will be the package name.
 Configuration
 =============
 
-In debug mode all output is logged. Loglevel for production is configured in
+Loglevel is configured in
 ``AndroidManifest.xml``:
 
 .. code-block:: xml
@@ -45,4 +45,4 @@ Available loglevels:
 * error
 * assert
 
-By default all log output is stripped.
+By default all log output is displayed.

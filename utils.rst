@@ -4,16 +4,6 @@ Utils
 
 Browse ``org.droidparts.util.*`` for useful helpers.
 
-ListViewSynchronizer
-====================
-
-Synchronizes ListViews to scroll together.
- 
-ImagePicker
-===========
-
-Displays a list of options to take photo or pick from gallery.
-
 EditTextValidator
 =================
 
