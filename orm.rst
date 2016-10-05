@@ -125,3 +125,5 @@ A junction table is required for m2m:
         @Column(nullable = false)
         public Tag tag;
     }
+    
+If column name is not specified via annotation, it will be ``field_name + _id``, e.g. ``track_id``.

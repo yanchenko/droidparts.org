@@ -17,8 +17,7 @@ E.g.
 
    <org.droidparts.widget.ClearableEditText
        android:drawableRight="@android:drawable/ic_action_remove"
-       android:drawablePadding="12dp"
-       ... />
+       android:drawablePadding="12dp" />
        
 
 MultiSelectListPreference

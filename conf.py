@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'DroidParts'
-copyright = u'2015, Alex Yanchenko'
+copyright = u'2016, Alex Yanchenko'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
