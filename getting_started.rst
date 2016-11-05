@@ -10,7 +10,7 @@ Repository Structure
 
 ::
 
-    git clone https://github.com/yanchenko/droidparts.git
+    git clone https://github.com/droidparts/droidparts.git
     
 and you'll see:
 
@@ -28,23 +28,15 @@ There are several options:
 
 * Download the latest `droidparts-x.y.z.jar <http://repository.sonatype.org/service/local/artifact/maven/redirect?r=central-proxy&g=org.droidparts&a=droidparts&v=LATEST>`_ and put it to the ``libs`` folder.
 
-* Specify as a Gradle or Maven dependency::
+* Specify as a Gradle dependency::
 
 .. code-block:: groovy
 
     dependencies {
         compile 'org.droidparts:droidparts:${version.from.jar.above}'
+        // needed if using Android Support library
+        compile 'org.droidparts:droidparts-support:${version.from.jar.above}'
     }
-
-.. code-block:: xml
-
-    <dependency>
-      <groupId>org.droidparts</groupId>
-      <artifactId>droidparts</artifactId>
-      <version>${version.from.jar.above}</version>
-    </dependency>
-
-Example: `build.gradle <https://github.com/yanchenko/droidparts/blob/master/droidparts-samples/DroidPartsGram/build.gradle>`_ from DroidPartsGram.
 
 Dependencies
 ============

@@ -2,11 +2,11 @@
 DroidParts
 ==========
 
-.. sidebar:: `GitHub <http://github.com/yanchenko/droidparts>`_ | `StackOverflow <http://stackoverflow.com/tags/droidparts>`_ | `Maven <http://search.maven.org/#search|ga|1|g%3A%22org.droidparts%22>`_
+.. sidebar:: `GitHub <http://github.com/droidparts/droidparts>`_ | `StackOverflow <http://stackoverflow.com/tags/droidparts>`_ | `Maven <http://search.maven.org/#search|ga|1|g%3A%22org.droidparts%22>`_
    
    .. image:: _static/images/droidparts_logo.*
    
-   `Changelog <https://raw.github.com/yanchenko/droidparts/master/CHANGES>`_
+   `Changelog <https://raw.github.com/droidparts/droidparts/master/CHANGES>`_
 
 is a carefully crafted Android framework that includes:
 
