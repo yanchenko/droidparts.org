@@ -1,0 +1,160 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Event Bus &#8212; DroidParts</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Working in Background" href="executors.html" />
+    <link rel="prev" title="AbstractPrefsManager" href="prefs.html" />
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40636409-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="executors.html" title="Working in Background"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="prefs.html" title="AbstractPrefsManager"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="event-bus">
+<h1>Event Bus<a class="headerlink" href="#event-bus" title="Permalink to this headline">¶</a></h1>
+<p>EventBus (aka message bus) comes handy when you have a set of listeners that care about events that happen somewhere else.</p>
+<p>Like displaying an incoming message in a messenger app.</p>
+<div class="section" id="events">
+<h2>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h2>
+<p>Each event has a String name and an optional data Object.</p>
+<p>Events can be posted from any thread, will be delivered on the main (aka UI) thread.</p>
+<div class="section" id="ordinary-events">
+<h3>Ordinary Events<a class="headerlink" href="#ordinary-events" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EventBus.postEvent(String</span> <span class="pre">name)</span></code></li>
+<li><code class="docutils literal"><span class="pre">EventBus.postEvent(String</span> <span class="pre">name,</span> <span class="pre">Object</span> <span class="pre">data)</span></code></li>
+</ul>
+</div>
+<div class="section" id="sticky-events">
+<h3>Sticky Events<a class="headerlink" href="#sticky-events" title="Permalink to this headline">¶</a></h3>
+<p>Posting an event sticky means that it’s most recent version will be delivered to the newly registered receivers.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EventBus.postEventSticky(String</span> <span class="pre">name)</span></code></li>
+<li><code class="docutils literal"><span class="pre">EventBus.postEventSticky(String</span> <span class="pre">name,</span> <span class="pre">Object</span> <span class="pre">data)</span></code></li>
+<li><code class="docutils literal"><span class="pre">EventBus.clearStickyEvents(String...</span> <span class="pre">eventNames)</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="event-receivers">
+<h2>Event Receivers<a class="headerlink" href="#event-receivers" title="Permalink to this headline">¶</a></h2>
+<p>In classes that extends base DroidParts Activities &amp; Fragments, the simplest way to register for Events is to use annotated methods:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="nd">@ReceiveEvents</span><span class="p">(</span><span class="n">name</span> <span class="o">=</span> <span class="p">{</span> <span class="s2">&quot;MESSAGE_SENT&quot;</span><span class="p">,</span> <span class="s2">&quot;MESSAGE_RECEIVED&quot;</span> <span class="p">})</span>
+<span class="n">private</span> <span class="n">void</span> <span class="n">onMessageEvent</span><span class="p">(</span><span class="n">String</span> <span class="n">eventName</span><span class="p">)</span> <span class="p">{</span>
+   <span class="o">//</span> <span class="n">TODO</span> <span class="n">process</span> <span class="mi">2</span> <span class="n">kinds</span> <span class="n">of</span> <span class="n">events</span> <span class="n">without</span> <span class="n">data</span>
+<span class="p">}</span>
+
+<span class="nd">@ReceiveEvents</span>
+<span class="n">private</span> <span class="n">void</span> <span class="n">onAnyEvent</span><span class="p">(</span><span class="n">String</span> <span class="n">eventName</span><span class="p">,</span> <span class="n">Object</span> <span class="n">eventData</span><span class="p">)</span> <span class="p">{</span>
+   <span class="o">//</span> <span class="n">TODO</span> <span class="n">process</span> <span class="nb">any</span> <span class="n">event</span> <span class="k">with</span> <span class="n">optional</span> <span class="n">data</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>This will generate receivers that are registered in <code class="docutils literal"><span class="pre">onResume()</span></code> and unregistered in <code class="docutils literal"><span class="pre">onPause()</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">EventReceiver</span></code>s created manually can be registered and must be unregistered to avoid leaks:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EventBus.registerReceiver(EventReceiver&lt;?&gt;</span> <span class="pre">receiver,</span> <span class="pre">String...</span> <span class="pre">eventNames)</span></code></li>
+<li><code class="docutils literal"><span class="pre">EventBus.unregisterReceiver(EventReceiver&lt;?&gt;</span> <span class="pre">receiver)</span></code></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Event Bus</a><ul>
+<li><a class="reference internal" href="#events">Events</a><ul>
+<li><a class="reference internal" href="#ordinary-events">Ordinary Events</a></li>
+<li><a class="reference internal" href="#sticky-events">Sticky Events</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#event-receivers">Event Receivers</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="prefs.html"
+                        title="previous chapter">AbstractPrefsManager</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="executors.html"
+                        title="next chapter">Working in Background</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="executors.html" title="Working in Background"
+             >next</a></li>
+        <li class="right" >
+          <a href="prefs.html" title="AbstractPrefsManager"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Alex Yanchenko.
+    </div>
+  </body>
+</html>

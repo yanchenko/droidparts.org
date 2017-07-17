@@ -1,0 +1,187 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Adapters &#8212; DroidParts</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="JSON (de)serialization" href="json.html" />
+    <link rel="prev" title="Object-Relational Mapping" href="orm.html" />
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40636409-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="json.html" title="JSON (de)serialization"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="orm.html" title="Object-Relational Mapping"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="adapters">
+<h1>Adapters<a class="headerlink" href="#adapters" title="Permalink to this headline">¶</a></h1>
+<p>DroidParts extends a number of Android adapters adding dependency injection &amp; features.</p>
+<div class="section" id="cursor-adapters">
+<h2>Cursor Adapters<a class="headerlink" href="#cursor-adapters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="cursoradapter">
+<h3>CursorAdapter<a class="headerlink" href="#cursoradapter" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">LayoutInflater</span> <span class="pre">getLayoutInflater()</span></code></li>
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">requeryData()</span></code></li>
+</ul>
+</div>
+<div class="section" id="entitycursoradapter">
+<h3>EntityCursorAdapter<a class="headerlink" href="#entitycursoradapter" title="Permalink to this headline">¶</a></h3>
+<p>Extends <em>CursorAdapter</em> and utilizes <em>EntityManager</em> features. The one usually used.</p>
+<p>Constructors:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">EntityCursorAdapter(Context</span> <span class="pre">ctx,</span> <span class="pre">Class&lt;EntityType&gt;</span> <span class="pre">entityCls)</span></code> - for the Entity class specified.</li>
+<li><code class="docutils literal"><span class="pre">EntityCursorAdapter(Context</span> <span class="pre">ctx,</span> <span class="pre">Class&lt;EntityType&gt;</span> <span class="pre">entityCls,</span> <span class="pre">AbstractSelect&lt;EntityType&gt;</span> <span class="pre">select)</span></code> - as previous, also providing the data.</li>
+<li><code class="docutils literal"><span class="pre">EntityCursorAdapter(Context</span> <span class="pre">ctx,</span> <span class="pre">EntityManager&lt;EntityType&gt;</span> <span class="pre">entityManager,</span> <span class="pre">AbstractSelect&lt;EntityType&gt;</span> <span class="pre">select)</span></code>, as previous, but using a custom EntityManager.</li>
+</ul>
+<p>Methods:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">setContent(AbstractSelect&lt;EntityType&gt;</span> <span class="pre">select)</span></code> - change the content.</li>
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">bindView(Context</span> <span class="pre">context,</span> <span class="pre">View</span> <span class="pre">view,</span> <span class="pre">EntityType</span> <span class="pre">item)</span></code> - override to populate a row View from Entity. Note that foreign keys won’t be filled in for performance reasons. Use <code class="docutils literal"><span class="pre">entityManager.fillForeignKeys(EntityType</span> <span class="pre">item,</span> <span class="pre">String...</span> <span class="pre">columnNames)</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">boolean</span> <span class="pre">create(EntityType</span> <span class="pre">item)</span></code></li>
+<li><code class="docutils literal"><span class="pre">EntityType</span> <span class="pre">read(int</span> <span class="pre">position)</span></code></li>
+<li><code class="docutils literal"><span class="pre">boolean</span> <span class="pre">update(EntityType</span> <span class="pre">item)</span></code></li>
+<li><code class="docutils literal"><span class="pre">boolean</span> <span class="pre">delete(int</span> <span class="pre">position)</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="widget-adapters">
+<h2>Widget Adapters<a class="headerlink" href="#widget-adapters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="arrayadapter">
+<h3>ArrayAdapter<a class="headerlink" href="#arrayadapter" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">setContent(Collection&lt;T&gt;</span> <span class="pre">coll)</span></code></li>
+</ul>
+</div>
+<div class="section" id="spinneradapter">
+<h3>SpinnerAdapter<a class="headerlink" href="#spinneradapter" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">setSelectedItem(T</span> <span class="pre">item)</span></code></li>
+<li><code class="docutils literal"><span class="pre">T</span> <span class="pre">getSelectedItem()</span></code></li>
+</ul>
+<p><em>StringSpinnerAdapter</em></p>
+</div>
+<div class="section" id="textwatcheradapter">
+<h3>TextWatcherAdapter<a class="headerlink" href="#textwatcheradapter" title="Permalink to this headline">¶</a></h3>
+<p><em>TextWatcherListener</em></p>
+</div>
+</div>
+<div class="section" id="viewholders">
+<h2>ViewHolders<a class="headerlink" href="#viewholders" title="Permalink to this headline">¶</a></h2>
+<p>ViewHolder pattern with automatic injection.</p>
+<p><em>ViewHolder</em>, <em>Text1Holder</em>, <em>Text2Holder</em>, <em>IconText2Holder</em></p>
+<p>E.g.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">View</span> <span class="n">view</span> <span class="o">=</span> <span class="n">layoutInflater</span><span class="o">.</span><span class="n">inflate</span><span class="p">(</span><span class="n">android</span><span class="o">.</span><span class="n">R</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">simple_list_item_2</span><span class="p">);</span>
+<span class="n">Text2Holder</span> <span class="n">holder</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Text2Holder</span><span class="p">(</span><span class="n">view</span><span class="p">);</span>
+<span class="n">view</span><span class="o">.</span><span class="n">setTag</span><span class="p">(</span><span class="n">holder</span><span class="p">);</span>
+<span class="o">//</span>
+<span class="n">holder</span><span class="o">.</span><span class="n">text1</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Text 1&quot;</span><span class="p">);</span>
+<span class="n">holder</span><span class="o">.</span><span class="n">text2</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Text 2&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Adapters</a><ul>
+<li><a class="reference internal" href="#cursor-adapters">Cursor Adapters</a><ul>
+<li><a class="reference internal" href="#cursoradapter">CursorAdapter</a></li>
+<li><a class="reference internal" href="#entitycursoradapter">EntityCursorAdapter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#widget-adapters">Widget Adapters</a><ul>
+<li><a class="reference internal" href="#arrayadapter">ArrayAdapter</a></li>
+<li><a class="reference internal" href="#spinneradapter">SpinnerAdapter</a></li>
+<li><a class="reference internal" href="#textwatcheradapter">TextWatcherAdapter</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#viewholders">ViewHolders</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="orm.html"
+                        title="previous chapter">Object-Relational Mapping</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="json.html"
+                        title="next chapter">JSON (de)serialization</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="json.html" title="JSON (de)serialization"
+             >next</a></li>
+        <li class="right" >
+          <a href="orm.html" title="Object-Relational Mapping"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Alex Yanchenko.
+    </div>
+  </body>
+</html>

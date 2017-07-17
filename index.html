@@ -1,0 +1,216 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>DroidParts &#8212; DroidParts</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="introduction.html" />
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40636409-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="introduction.html" title="Introduction"
+             accesskey="N">next</a></li>
+        <li class="nav-item nav-item-0"><a href="#">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="droidparts">
+<h1>DroidParts<a class="headerlink" href="#droidparts" title="Permalink to this headline">¶</a></h1>
+<div class="sidebar">
+<p class="first sidebar-title"><a class="reference external" href="http://github.com/droidparts/droidparts">GitHub</a> | <a class="reference external" href="http://stackoverflow.com/tags/droidparts">StackOverflow</a> | <a class="reference external" href="http://search.maven.org/#search|ga|1|g%3A%22org.droidparts%22">Maven</a></p>
+<img alt="_images/droidparts_logo.png" src="_images/droidparts_logo.png" />
+<p class="last"><a class="reference external" href="https://raw.github.com/droidparts/droidparts/master/CHANGES">Changelog</a></p>
+</div>
+<p>is a carefully crafted Android framework that includes:</p>
+<ul class="simple">
+<li><em>DI</em> - injection of Views, Fragments, Services, anything.</li>
+<li><em>ORM</em> - efficient persistence utilizing Cursors &amp; fluent API.</li>
+<li><em>EventBus</em> for subscribing to and posting events.</li>
+<li>Simple <em>JSON</em> (de)serialization capable of handling nested objects.</li>
+<li><em>XML</em> deserialization, similar to <em>JSON</em>.</li>
+<li>Improved <em>AsyncTask</em> &amp; <em>IntentService</em> with Exceptions &amp; result reporting support.</li>
+<li><em>L</em>ogger that figures out tag itself &amp; logs any object.</li>
+<li><em>RESTClient</em> for GETting, PUTting, POSTing, DELETing &amp; InputStream-getting,
+also speaks JSON.</li>
+<li><em>ImageFetcher</em> to asynchronously attach images to ImageViews, with caching,
+cross-fade &amp; transformation support.</li>
+<li>Numerous <em>Utils</em>.</li>
+</ul>
+<p>These features are available on Android 2.2+ &amp; come in an under 300kB jar (→0 overengineering).</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#some-code">Some Code</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#repository-structure">Repository Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#integration">Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#proguard">ProGuard</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="di.html">Dependency Injection</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="di.html#dependencyprovider">DependencyProvider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="di.html#annotations">Annotations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="activities.html">Activities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="activities.html#activity-fragmentactivity">Activity &amp; FragmentActivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activities.html#singlefragmentactivity">SingleFragmentActivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activities.html#tabbedfragmentactivity">TabbedFragmentActivity</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="orm.html">Object-Relational Mapping</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="orm.html#dbopenhelper">DBOpenHelper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orm.html#entities">Entities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orm.html#entitymanager">EntityManager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="orm.html#many-to-many">Many-to-many</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adapters.html">Adapters</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adapters.html#cursor-adapters">Cursor Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adapters.html#widget-adapters">Widget Adapters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adapters.html#viewholders">ViewHolders</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="json.html">JSON (de)serialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="json.html#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="json.html#jsonserializer">JSONSerializer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="xml.html">XML deserialization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="xml.html#models">Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="xml.html#xmlserializer">XMLSerializer</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="prefs.html">AbstractPrefsManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="event_bus.html">Event Bus</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="event_bus.html#events">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="event_bus.html#event-receivers">Event Receivers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="executors.html">Working in Background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="executors.html#asynctask">AsyncTask</a></li>
+<li class="toctree-l2"><a class="reference internal" href="executors.html#intentservice">IntentService</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rest.html">RESTClient</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#restclient2">RESTClient2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest.html#workers">Workers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="image_fetcher.html">ImageFetcher</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="image_fetcher.html#customization">Customization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_fetcher.html#imagereshaper">ImageReshaper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_fetcher.html#imagefetchlistener">ImageFetchListener</a></li>
+<li class="toctree-l2"><a class="reference internal" href="image_fetcher.html#pausing">Pausing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="log.html">Logging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="log.html#configuration">Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="utils.html">Utils</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#edittextvalidator">EditTextValidator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#bitmaputils">BitmapUtils</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html#intentfactory">IntentFactory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="widgets.html">Widgets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="widgets.html#clearableedittext">ClearableEditText</a></li>
+<li class="toctree-l2"><a class="reference internal" href="widgets.html#multiselectlistpreference">MultiSelectListPreference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">DroidParts Support Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="support.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="support.html#setup">Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="converters.html">Custom Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#annotations-performance">Annotations Performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html#crash-after-layout-changes">Crash after Layout Changes</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>More useful code: <a class="reference external" href="https://gist.github.com/yanchenko">https://gist.github.com/yanchenko</a></p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Next topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="next chapter">Introduction</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="introduction.html" title="Introduction"
+             >next</a></li>
+        <li class="nav-item nav-item-0"><a href="#">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Alex Yanchenko.
+    </div>
+  </body>
+</html>

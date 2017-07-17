@@ -1,0 +1,140 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>XML deserialization &#8212; DroidParts</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="AbstractPrefsManager" href="prefs.html" />
+    <link rel="prev" title="JSON (de)serialization" href="json.html" />
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40636409-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="prefs.html" title="AbstractPrefsManager"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="json.html" title="JSON (de)serialization"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="xml-deserialization">
+<h1>XML deserialization<a class="headerlink" href="#xml-deserialization" title="Permalink to this headline">¶</a></h1>
+<p>A simple way to convert Models to JSON objects &amp; back. Similar to <a class="reference internal" href="json.html"><span class="doc">JSON</span></a>.
+Based on the built-in <code class="docutils literal"><span class="pre">org.w3c.dom</span></code> parser.</p>
+<div class="section" id="models">
+<h2>Models<a class="headerlink" href="#models" title="Permalink to this headline">¶</a></h2>
+<p>Model classes must extend <code class="docutils literal"><span class="pre">Model</span></code> or it’s subclass (e.g. <code class="docutils literal"><span class="pre">Entity</span></code>) and have fields annotated with <code class="docutils literal"><span class="pre">&#64;XML</span></code>.</p>
+<div class="section" id="xml-annotation">
+<h3>&#64;XML Annotation<a class="headerlink" href="#xml-annotation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">tag</span></code> - XML tag name.</li>
+<li><code class="docutils literal"><span class="pre">attribute</span></code> - XML tag attribute or nested tag names when deserializing a NodeList.</li>
+<li><code class="docutils literal"><span class="pre">optional</span></code> - if true, won’t throw an exception if the tag/attribute is missing.</li>
+</ul>
+<p>Use <code class="docutils literal"><span class="pre">XML.SUB</span></code> separator in <code class="docutils literal"><span class="pre">tag</span></code> element to access nested object fields.</p>
+<p>See <code class="docutils literal"><span class="pre">XMLTestCase</span></code> for an example.</p>
+</div>
+</div>
+<div class="section" id="xmlserializer">
+<h2>XMLSerializer<a class="headerlink" href="#xmlserializer" title="Permalink to this headline">¶</a></h2>
+<p>Has the following methods:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">static</span> <span class="pre">Document</span> <span class="pre">parseDocument(String</span> <span class="pre">xml)</span></code></li>
+<li><code class="docutils literal"><span class="pre">ModelType</span> <span class="pre">deserialize(Node</span> <span class="pre">node)</span></code></li>
+<li><code class="docutils literal"><span class="pre">ArrayList&lt;ModelType&gt;</span> <span class="pre">deserializeAll(NodeList</span> <span class="pre">nodeList)</span></code></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">XML deserialization</a><ul>
+<li><a class="reference internal" href="#models">Models</a><ul>
+<li><a class="reference internal" href="#xml-annotation">&#64;XML Annotation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#xmlserializer">XMLSerializer</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="json.html"
+                        title="previous chapter">JSON (de)serialization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="prefs.html"
+                        title="next chapter">AbstractPrefsManager</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="prefs.html" title="AbstractPrefsManager"
+             >next</a></li>
+        <li class="right" >
+          <a href="json.html" title="JSON (de)serialization"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Alex Yanchenko.
+    </div>
+  </body>
+</html>

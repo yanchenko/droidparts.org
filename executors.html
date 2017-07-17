@@ -1,0 +1,127 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Working in Background &#8212; DroidParts</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'HEAD',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="RESTClient" href="rest.html" />
+    <link rel="prev" title="Event Bus" href="event_bus.html" />
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-40636409-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="rest.html" title="RESTClient"
+             accesskey="N">next</a></li>
+        <li class="right" >
+          <a href="event_bus.html" title="Event Bus"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="working-in-background">
+<h1>Working in Background<a class="headerlink" href="#working-in-background" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="asynctask">
+<h2>AsyncTask<a class="headerlink" href="#asynctask" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal"><span class="pre">AsyncTask</span></code> &amp; <code class="docutils literal"><span class="pre">SimpleAsyncTask</span></code> support <code class="docutils literal"><span class="pre">AsyncTaskResultListener</span></code> that has methods to handle either a Result or an Exception.</p>
+<p>Subclass, overrride <code class="docutils literal"><span class="pre">Result</span> <span class="pre">onExecute([Params...</span> <span class="pre">params])</span> <span class="pre">throws</span> <span class="pre">Exception</span></code>;</p>
+<p>Override the following methods for any additional processing in the background:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">onPostExecuteSuccess(Result</span> <span class="pre">result)</span></code></li>
+<li><code class="docutils literal"><span class="pre">void</span> <span class="pre">onPostExecuteFailure(Exception</span> <span class="pre">exception)</span></code></li>
+</ul>
+</div>
+<div class="section" id="intentservice">
+<h2>IntentService<a class="headerlink" href="#intentservice" title="Permalink to this headline">¶</a></h2>
+<p>Similarly, <code class="docutils literal"><span class="pre">IntentService</span></code> is extended to support <code class="docutils literal"><span class="pre">ResultReceiver</span></code>. Has <code class="docutils literal"><span class="pre">void</span> <span class="pre">removePendingIntents()</span></code> method.</p>
+<p>Subclass, overrride <code class="docutils literal"><span class="pre">Bundle</span> <span class="pre">onExecute(String</span> <span class="pre">action,</span> <span class="pre">Bundle</span> <span class="pre">data)</span> <span class="pre">throws</span> <span class="pre">Exception</span></code>;</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Working in Background</a><ul>
+<li><a class="reference internal" href="#asynctask">AsyncTask</a></li>
+<li><a class="reference internal" href="#intentservice">IntentService</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="event_bus.html"
+                        title="previous chapter">Event Bus</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rest.html"
+                        title="next chapter">RESTClient</a></p>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="rest.html" title="RESTClient"
+             >next</a></li>
+        <li class="right" >
+          <a href="event_bus.html" title="Event Bus"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">DroidParts</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2016, Alex Yanchenko.
+    </div>
+  </body>
+</html>
